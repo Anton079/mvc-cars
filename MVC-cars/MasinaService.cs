@@ -20,13 +20,13 @@ namespace MVC_cars
             masina1.inaltime = 10;
             masina1.latime = 2;
             masina1.marca = "Dacia";
-            masina1.culoare = " Negru";
+            masina1.culoare = "Albastru";
 
             Masina masina2 = new Masina();
             masina2.greutate = 2500;
             masina2.inaltime = 25;
             masina2.latime = 15;
-            masina2.culoare = "Rosu";
+            masina2.culoare = "Albastru";
             masina2.marca = "Mercedes";
 
             Masina masina3 = new Masina();
@@ -58,7 +58,6 @@ namespace MVC_cars
             this.MasinaList.Add(masina1);
         }
 
-
         public void AfisareMasini()
         {
             foreach(Masina masina in MasinaList)
@@ -68,5 +67,43 @@ namespace MVC_cars
 
             }
         }
+
+
+        //metoda ce  returneaza o lista cu toate masinile de o anumtia culoare
+        public List<Masina> FilterMasinaByCuloare(string culoare)
+        {
+
+            List<Masina> masiniFiltersByCuloare = new List<Masina>();
+
+            foreach(Masina x in MasinaList)
+            {
+                if(culoare.Equals(x.culoare) )
+                {
+
+
+                    masiniFiltersByCuloare.Add(x);
+                }
+            }
+            return masiniFiltersByCuloare;
+        }
+
+
+        //functie ce returneaza o masina cu greutatea ce-a mai mare
+        public Masina FindMasinaGreutateMaxima()
+        {
+            int greutateMax = 0;
+            Masina modelMasina = MasinaList[0];
+            foreach(Masina car in MasinaList)
+            {
+                if(car.greutate > greutateMax)
+                {
+                    greutateMax = car.greutate;
+                    modelMasina = car;
+                }
+            }
+            return modelMasina;
+        }
     }
+
+
 }
