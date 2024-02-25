@@ -21,12 +21,7 @@ internal class Program
          {
             Console.WriteLine(x.marca);
          }
-
-
-
         Masina maxima=service.FindMasinaGreutateMaxima();
-
-
         Console.WriteLine(  maxima.MasiniInfo());
 
 
