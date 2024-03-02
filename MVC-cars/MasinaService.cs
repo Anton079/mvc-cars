@@ -103,6 +103,21 @@ namespace MVC_cars
             }
             return modelMasina;
         }
+
+
+        //CRUD
+        public bool EditCarWidth(string marca, int newWidth)
+        {
+            foreach (Masina x in MasinaList)
+            {
+                if (x.marca == marca)
+                {
+                    x.latime = newWidth; 
+                    return true;
+                }
+            }
+            return false; 
+        }
     }
 
 
