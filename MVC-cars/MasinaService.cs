@@ -58,15 +58,6 @@ namespace MVC_cars
             this.MasinaList.Add(masina1);
         }
 
-        public void AfisareMasini()
-        {
-            foreach(Masina masina in MasinaList)
-            {
-
-                Console.WriteLine(masina.MasiniInfo());
-
-            }
-        }
 
 
         //metoda ce  returneaza o lista cu toate masinile de o anumtia culoare
@@ -106,18 +97,49 @@ namespace MVC_cars
 
 
         //CRUD
-        public bool EditCarWidth(string marca, int newWidth)
+        public void AfisareMasini()
         {
-            foreach (Masina x in MasinaList)
+            foreach(Masina masina in MasinaList)
             {
-                if (x.marca == marca)
+
+                Console.WriteLine(masina.MasiniInfo());
+
+            }
+        }
+
+        public int FindMasinaByMarca(string marcaCautata)
+        {
+            for(int i = 0; i < MasinaList.Count; i++)
+            {
+                if (MasinaList[i].marca.Equals(marcaCautata))
                 {
-                    x.latime = newWidth; 
-                    return true;
+                    return i;
                 }
             }
-            return false; 
+            return -1;
         }
+
+        public bool AddMasiniLista(Masina masinaNoua)
+        {
+            if (FindMasinaByMarca(masinaNoua.marca) == -1)
+            {
+                this.MasinaList.Add(masinaNoua);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RemoveMasinaByMarca(string MarcaCarCautata)
+        {
+            int MasinaCautata = FindMasinaByMarca(MarcaCarCautata);
+            if(MasinaCautata == -1)
+            {
+                MasinaList.RemoveAt(MasinaCautata);
+                return true;
+            }
+            return false;
+        }
+
     }
 
 
