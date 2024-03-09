@@ -12,17 +12,11 @@ internal class Program
         
 
         service.LoadData();
+        View view = new View();
+
+        service.AfisareMasiniByMarca("Audi");
 
 
-        service.AfisareMasini();
-
-         List<Masina> masini=  service.FilterMasinaByCuloare("Albastru");
-         foreach(Masina x in masini)
-         {
-            Console.WriteLine(x.marca);
-         }
-        Masina maxima=service.FindMasinaGreutateMaxima();
-        Console.WriteLine(  maxima.MasiniInfo());
 
 
 

@@ -107,17 +107,6 @@ namespace MVC_cars
             }
         }
 
-        public int FindMasinaByMarca(string marcaCautata)
-        {
-            for(int i = 0; i < MasinaList.Count; i++)
-            {
-                if (MasinaList[i].marca.Equals(marcaCautata))
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
 
         public bool AddMasiniLista(Masina masinaNoua)
         {
@@ -140,7 +129,30 @@ namespace MVC_cars
             return false;
         }
 
+        public int FindMasinaByMarca(string marcaCautata)
+        {
+            for(int i = 0; i < MasinaList.Count; i++)
+            {
+                if (MasinaList[i].marca.Equals(marcaCautata))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        //View
+        public void AfisareMasiniByMarca(string MarcaMasinii)
+        {
+            foreach (Masina x in MasinaList)
+            {
+                if (x.marca.Equals(MarcaMasinii))
+                {
+                    Console.WriteLine(x);
+                }
+            }
+
+            
+        }
     }
-
-
 }
