@@ -11,11 +11,11 @@ internal class Program
 
         
 
-        service.LoadData();
         View view = new View();
+        service.LoadData();
 
-        service.AfisareMasiniByMarca("Audi");
 
+        view.play();
 
 
 

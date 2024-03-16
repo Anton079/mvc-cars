@@ -14,6 +14,7 @@ namespace MVC_cars
         public string marca;
         public int inaltime;
         public int latime;
+        public bool inchiriata;
 
         public string MasiniInfo()
         {
@@ -23,6 +24,7 @@ namespace MVC_cars
             text += "Marca " + marca + "\n";
             text += "Inaltimea " + inaltime + "\n";
             text += "Latimea " + latime + "\n";
+            text += "Inchiriata" + inaltime + "\n";
             return text;
         }
 
