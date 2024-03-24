@@ -9,66 +9,72 @@ namespace MVC_cars
     public class MasinaService
     {
         //atribute
-        public List<Masina> MasinaList = new List<Masina>();
+        private List<Masina> _MasinaList;
+
+        public MasinaService()
+        {
+            _MasinaList = new List<Masina>();
+            this.LoadData();
+        }
 
 
         //metode
         public  void LoadData()
         {
             Masina masina1 = new Masina();
-            masina1.greutate = 2000;
-            masina1.inaltime = 10;
-            masina1.latime = 2;
-            masina1.marca = "Dacia";
-            masina1.culoare = "Albastru";
-            masina1.inchiriata = true;
+            masina1.Greutate = 2000;
+            masina1.Inaltime = 10;
+            masina1.Latime = 2;
+            masina1.Marca = "Dacia";
+            masina1.Culoare = "Albastru";
+            masina1.Inchiriata = true;
 
             Masina masina2 = new Masina();
-            masina2.greutate = 2500;
-            masina2.inaltime = 25;
-            masina2.latime = 15;
-            masina2.culoare = "Albastru";
-            masina2.marca = "Mercedes";
-            masina2.inchiriata = false;
+            masina2.Greutate = 2500;
+            masina2.Inaltime = 25;
+            masina2.Latime = 15;
+            masina2.Culoare = "Albastru";
+            masina2.Marca = "Mercedes";
+            masina2.Inchiriata = false;
 
             Masina masina3 = new Masina();
-            masina3.greutate = 3500;
-            masina3.latime = 15;
-            masina3.inaltime = 60;
-            masina3.marca = "Audi";
-            masina3.culoare = "Gri";
-            masina3.inchiriata = false;
+            masina3.Greutate = 3500;
+            masina3.Latime = 15;
+            masina3.Inaltime = 60;
+            masina3.Marca = "Audi";
+            masina3.Culoare = "Gri";
+            masina3.Inchiriata = false;
 
             Masina masina4 = new Masina();
-            masina4.greutate = 5700;
-            masina4.inaltime = 3600;
-            masina4.latime = 40;
-            masina4.marca = "Nissan";
-            masina4.culoare = "Argintiu";
-            masina4.inchiriata = true;
+            masina4.Greutate = 5700;
+            masina4.Inaltime = 3600;
+            masina4.Latime = 40;
+            masina4.Marca = "Nissan";
+            masina4.Culoare = "Argintiu";
+            masina4.Inchiriata = true;
 
             Masina masina5 = new Masina();
-            masina5.marca = "Ford";
-            masina5.latime = 65;
-            masina5.inaltime = 60;
-            masina5.culoare = "gri";
-            masina5.greutate = 30;
-            masina5.inchiriata = false;
+            masina5.Marca = "Ford";
+            masina5.Latime = 65;
+            masina5.Inaltime = 60;
+            masina5.Culoare = "gri";
+            masina5.Greutate = 30;
+            masina5.Inchiriata = false;
 
 
-            this.MasinaList.Add(masina5);
-            this.MasinaList.Add(masina4);
-            this.MasinaList.Add(masina3);
-            this.MasinaList.Add(masina2);
-            this.MasinaList.Add(masina1);
+            this._MasinaList.Add(masina5);
+            this._MasinaList.Add(masina4);
+            this._MasinaList.Add(masina3);
+            this._MasinaList.Add(masina2);
+            this._MasinaList.Add(masina1);
         }
 
         //CRUD
         public bool AddMasiniLista(Masina masinaNoua)
         {
-            if (FindMasinaByMarca(masinaNoua.marca) == -1)
+            if (FindMasinaByMarca(masinaNoua.Marca) == -1)
             {
-                this.MasinaList.Add(masinaNoua);
+                this._MasinaList.Add(masinaNoua);
                 return true;
             }
             return false;
@@ -79,7 +85,7 @@ namespace MVC_cars
             int MasinaCautata = FindMasinaByMarca(MarcaCarCautata);
             if(MasinaCautata == -1)
             {
-                MasinaList.RemoveAt(MasinaCautata);
+                _MasinaList.RemoveAt(MasinaCautata);
                 return true;
             }
             return false;
@@ -87,9 +93,9 @@ namespace MVC_cars
 
         public int FindMasinaByMarca(string marcaCautata)
         {
-            for(int i = 0; i < MasinaList.Count; i++)
+            for(int i = 0; i < _MasinaList.Count; i++)
             {
-                if (MasinaList[i].marca.Equals(marcaCautata))
+                if (_MasinaList[i].Marca.Equals(marcaCautata))
                 {
                     return i;
                 }
@@ -100,7 +106,7 @@ namespace MVC_cars
         //View
         public void AfisareMasini()
         {
-            foreach(Masina masina in MasinaList)
+            foreach(Masina masina in _MasinaList)
             {
 
                 Console.WriteLine(masina.MasiniInfo());
@@ -110,9 +116,9 @@ namespace MVC_cars
 
         public void AfisareMasiniDisponibile()
         {
-            for(int i = 0; i<MasinaList.Count; i++)
+            for(int i = 0; i< _MasinaList.Count; i++)
             {
-                if (MasinaList[i].inchiriata == false)
+                if (_MasinaList[i].Inchiriata == false)
                 {
                     Console.WriteLine(i);
                 }
@@ -121,9 +127,9 @@ namespace MVC_cars
 
         public void AfisareMasiniByMarca(string MarcaMasinii)
         {
-            foreach (Masina x in MasinaList)
+            foreach (Masina x in _MasinaList)
             {
-                if (x.marca.Equals(MarcaMasinii))
+                if (x.Marca.Equals(MarcaMasinii))
                 {
                     Console.WriteLine(x.MasiniInfo());
                 }
@@ -136,9 +142,9 @@ namespace MVC_cars
         public bool InchiriazaMasinaByDenumire(string Marca)
         {
             int poz = FindMasinaByMarca(Marca);
-            if (MasinaList[poz].inchiriata == false)
+            if (_MasinaList[poz].Inchiriata == false)
             {
-                MasinaList[poz].inchiriata = true;
+                _MasinaList[poz].Inchiriata = true;
                 return true;
             }
 
@@ -147,9 +153,9 @@ namespace MVC_cars
 
         public bool AddCarInList(Masina MasinaNoua)
         {
-            if(FindMasinaByMarca(MasinaNoua.marca) != -1)
+            if(FindMasinaByMarca(MasinaNoua.Marca) != -1)
             {
-                this.MasinaList.Add(MasinaNoua);
+                this._MasinaList.Add(MasinaNoua);
                 return true;
             }
             return false;
@@ -158,11 +164,11 @@ namespace MVC_cars
         //Edit
         public bool EditMasinaGreutate(string car, int CarGreutate)
         {
-            foreach (Masina x in MasinaList)
+            foreach (Masina x in _MasinaList)
             {
-                if (x.marca == car)
+                if (x.Marca == car)
                 {
-                    x.greutate = CarGreutate;
+                    x.Greutate = CarGreutate;
                     return true;
                 }
             }
@@ -171,11 +177,11 @@ namespace MVC_cars
 
         public bool EditMasinaCuloare(string car, int CarCuloare)
         {
-            foreach (Masina x in MasinaList)
+            foreach (Masina x in _MasinaList)
             {
-                if (x.marca == car)
+                if (x.Marca == car)
                 {
-                    x.greutate = CarCuloare;
+                    x.Greutate = CarCuloare;
                     return true;
                 }
             }
@@ -187,9 +193,9 @@ namespace MVC_cars
         {
             List<Masina> carListMarca = new List<Masina>();
 
-            foreach (Masina x in MasinaList)
+            foreach (Masina x in _MasinaList)
             {
-                if (marcaAlesa.Equals(x.marca))
+                if (marcaAlesa.Equals(x.Marca))
                 {
                     carListMarca.Add(x);
                 }
@@ -201,9 +207,9 @@ namespace MVC_cars
         {
             List<Masina> carListGreutate = new List<Masina>();
 
-            foreach (Masina x in MasinaList)
+            foreach (Masina x in _MasinaList)
             {
-                if (marcaAlesa.Equals(x.greutate))
+                if (marcaAlesa.Equals(x.Greutate))
                 {
                     carListGreutate.Add(x);
                 }

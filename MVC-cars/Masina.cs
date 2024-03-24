@@ -9,24 +9,59 @@ namespace MVC_cars
 {
     public class Masina
     {
-        public int greutate;
-        public string culoare;
-        public string marca;
-        public int inaltime;
-        public int latime;
-        public bool inchiriata;
+        public int _greutate;
+        public string _culoare;
+        public string _marca;
+        public int _inaltime;
+        public int _latime;
+        public bool _inchiriata;
 
         public string MasiniInfo()
         {
             string text = " ";
-            text += "Greutatea " + greutate + "\n";
-            text += "Culoarea " + culoare + "\n";
-            text += "Marca " + marca + "\n";
-            text += "Inaltimea " + inaltime + "\n";
-            text += "Latimea " + latime + "\n";
-            text += "Inchiriata" + inaltime + "\n";
+            text += "Greutatea " + Greutate + "\n";
+            text += "Culoarea " + Culoare + "\n";
+            text += "Marca " + Marca + "\n";
+            text += "Inaltimea " + Inaltime + "\n";
+            text += "Latimea " + Latime + "\n";
+            text += "Inchiriata" + Inchiriata + "\n";
             return text;
         }
 
+        public int Greutate
+        {
+            get { return _greutate; }
+            set { _greutate = value; }
+        }
+
+        public string Culoare
+        {
+            get { return _culoare; }
+            set { _culoare = value; }
+        }
+
+        public string Marca
+        {
+            get { return _marca; }
+            set { _marca = value; }
+        }
+
+        public int Inaltime
+        {
+            get { return _inaltime; }
+            set { _inaltime = value; }
+        }
+
+        public int Latime
+        {
+            get { return _latime; }
+            set { _latime = value; }
+        }
+
+        public bool Inchiriata
+        {
+            get { return _inchiriata; }
+            set { _inchiriata = value;}
+        }
     }
 }
